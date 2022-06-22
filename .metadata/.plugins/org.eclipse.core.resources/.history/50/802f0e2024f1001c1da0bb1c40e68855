@@ -1,0 +1,31 @@
+//============================================================================
+// Name        : ToyRobot.cpp
+// Author      : Benjamin Lvovsky
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include "cmdproc.hpp"
+
+using namespace std;
+
+int main() {
+	string line;
+	cout << "Toy Robot Test exercise" << endl;
+	ToyRobot tr;
+	CommandProcessing cp(tr);
+
+	while (true) {
+		cout << "Enter one of command one per line:\nPLACE X,Y,F\nMOVE\nLEFT\nRIGHT\nREPORT:" << line << endl;
+		std::getline(cin, line);
+		cout << "Read command line: " << line << endl;
+		try {
+			cp.process(line);
+		} catch (invalid_argument e) {
+			cout << e.what() << endl << endl;
+		}
+	}
+	return 0;
+}

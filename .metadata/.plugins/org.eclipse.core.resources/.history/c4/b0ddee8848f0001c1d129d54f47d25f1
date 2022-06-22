@@ -1,0 +1,28 @@
+class Report {
+  private:
+    bool placed;
+
+  public:
+    Report();
+	bool Place();
+	Report Report();
+	Facing FACED();
+	int X();
+	int Y();
+};
+
+
+class ToyRobot {
+  private:
+    bool placed;
+    int facing;
+
+  public:
+    ToyRobot() : facing(0), placed(false) {}
+	bool IsPlaced();
+	void Place(int X, int Y);
+	Report Report();
+	Facing FACED();
+	int X();
+	int Y();
+};

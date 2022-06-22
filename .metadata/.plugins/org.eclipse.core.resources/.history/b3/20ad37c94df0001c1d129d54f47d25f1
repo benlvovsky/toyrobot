@@ -1,0 +1,102 @@
+#include <stdio.h>
+#include <iostream>
+#include "toyrobot.hpp"
+
+using namespace std;
+
+bool ToyRobot::IsPlaced() {
+  return this->placed;
+}
+
+
+void ToyRobot::Place(int x, int y) {
+	if (x < 0 || x > 4) {
+		throw invalid_argument("Position is beyond acceptable");
+	}
+	this->x = x;
+	this->y = y;
+
+}
+
+void ToyRobot::Move() {
+	switch(this->facing) {
+		case NORTH:
+			if (y <= 0) {
+				throw invalid_argument("Position is beyond acceptable");
+			} else {
+				y--;
+			}
+			break;
+		case SOUTH:
+			if (y >= 4) {
+				throw invalid_argument("Position is beyond acceptable");
+			} else {
+				y++;
+			}
+			break;
+		case WEST:
+			if (x <= 0) {
+				throw invalid_argument("Position is beyond acceptable");
+			} else {
+				x--;
+			}
+			break;
+		case EAST:
+			if (x >= 4) {
+				throw invalid_argument("Position is beyond acceptable");
+			} else {
+				x++;
+			}
+			break;
+		default:
+			throw invalid_argument("unacceptable direction");
+	}
+}
+
+void ToyRobot::Left() {
+	switch(this->facing) {
+		case NORTH:
+			this->facing = WEST;
+			break;
+		case SOUTH:
+			this->facing = EAST;
+			break;
+		case WEST:
+			this->facing = SOUTH;
+			break;
+		case EAST:
+			this->facing = NORTH;
+			break;
+		default:
+			throw invalid_argument("unacceptable direction");
+	}
+}
+
+void ToyRobot::Right() {
+	switch(this->facing) {
+		case NORTH:
+			this->facing = EAST;
+			break;
+		case SOUTH:
+			this->facing = WEST;
+			break;
+		case WEST:
+			this->facing = NORTH;
+			break;
+		case EAST:
+			this->facing = SOUTH;
+			break;
+		default:
+			throw invalid_argument("unacceptable direction");
+	}
+}
+
+Report ToyRobot::CreateReport() {
+	struct Report report;
+	report.placed = this->placed;
+    report.facing = this->facing;
+    report.x = this->x;
+    report.y = this->y;
+
+    return report;
+}

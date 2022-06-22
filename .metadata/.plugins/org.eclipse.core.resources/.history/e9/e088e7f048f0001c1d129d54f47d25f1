@@ -1,0 +1,30 @@
+enum Facing {
+	NORTH, SOUTH, EAST, WEST
+};
+
+class Report {
+  private:
+    bool placed;
+
+  public:
+    Report();
+	Facing FACED();
+	int X();
+	int Y();
+};
+
+
+class ToyRobot {
+  private:
+    bool placed;
+    Facing facing;
+
+  public:
+    ToyRobot() : facing(0), placed(false) {}
+	bool IsPlaced();
+	void Place(int X, int Y);
+	Report Report();
+
+	int X();
+	int Y();
+};

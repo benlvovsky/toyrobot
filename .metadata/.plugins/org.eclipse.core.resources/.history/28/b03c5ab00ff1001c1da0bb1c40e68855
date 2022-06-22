@@ -1,0 +1,20 @@
+#include <iostream>
+#include "toyrobot.hpp"
+using namespace std;
+
+
+class CommandProcessing {
+	ToyRobot& tr;
+  public:
+	CommandProcessing(ToyRobot& toyRobot) : tr(toyRobot) {}
+
+	bool IsPlaced();
+
+	void Place(int x, int y, Facing f);
+	void Move();
+	void Left();
+	void Right();
+	Report CreateReport();
+	void process(string line);
+	Facing faceStrToEnum(string sFacing);
+};

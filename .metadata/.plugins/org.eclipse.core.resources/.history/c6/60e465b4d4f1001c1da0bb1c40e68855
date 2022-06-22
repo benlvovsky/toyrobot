@@ -1,0 +1,16 @@
+Readme.md
+ Created on: 21 June 2022
+     Author: ben
+
+# This is a Toy Robot test exercise in C++
+I used Eclipse as IDE, homebrew gtest (with gmock) install C++ 11
+It has 2 projects:
+1. Is the Toy Robot Project 
+2. Test project I used to develop and test the above
+
+The dev was via TDD and may have some remnants form that process like some extra unneeded anymore at the end tests
+
+# To run test: `unit_test/Debug/unit_test`
+# To run the program itself:
+## in interative mode: from `ToyRobot/Debug` folder `./ToyRobot`
+## with batch resource file: `cat ../resources/testrun.txt  | ./ToyRobot`

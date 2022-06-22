@@ -1,0 +1,47 @@
+#include <iostream>
+#include "gtest/gtest.h"
+//#include "src/counter.hpp"
+#include "src/toyrobot.hpp"
+
+using namespace std;
+
+TEST(ToyRobot, Place) {
+  ToyRobot tr;
+  EXPECT_FALSE(tr.IsPlaced());
+  tr.Place(0, 0, NORTH);
+  Report report = tr.CreateReport();
+  EXPECT_EQ(NORTH, report.facing);
+  EXPECT_EQ(0, report.x);
+  EXPECT_EQ(0, report.y);
+}
+
+
+//TEST(Counter, Increment) {
+//  Counter c;
+//  EXPECT_EQ(0, c.Incr());
+//  EXPECT_EQ(1, c.Incr());
+//  EXPECT_EQ(2, c.Incr());
+//}
+//
+//
+//TEST(Counter2, value) {
+//  Counter c;
+//  c.Incr();
+//
+//  EXPECT_EQ(1, c.value());
+//  EXPECT_EQ(2, c.value()); //This test should fail
+//}
+//
+
+TEST(ToyRobot, Movement) {
+  ToyRobot tr;
+  tr.Place(0, 0, EAST);
+  tr.Move();
+  EXPECT_EQ(1, tr.CreateReport.x);
+}
+
+
+int main(int argc, char **argv) {
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}

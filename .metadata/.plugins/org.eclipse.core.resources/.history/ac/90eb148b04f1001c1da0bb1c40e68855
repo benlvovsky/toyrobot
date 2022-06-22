@@ -1,0 +1,39 @@
+//============================================================================
+// Name        : ToyRobot.cpp
+// Author      : Benjamin Lvovsky
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include "toyrobot.hpp"
+
+using namespace std;
+
+int main() {
+	std::string line;
+	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	ToyRobot tr;
+	while (true) {
+		cout << "Enter command (PLACE X,Y,F, MOVE, LEFT, RIGHT, REPORT): " << line << std::endl;
+		cin >> line;
+		process(line);
+		if(line.compare("MOVE") == 0) {
+			tr.Move();
+		} else if(line.compare("PLACE") == 0) {
+
+		} else if(line.compare("LEF") == 0) {
+
+		} else if(line.compare("RIGHT") == 0) {
+
+
+		} else if(line.compare("REPORT") == 0) {
+
+		} else {
+			throw invalid_argument("Incorrect command");
+		}
+
+	}
+	return 0;
+}

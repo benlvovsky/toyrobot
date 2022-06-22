@@ -1,0 +1,20 @@
+12:37:57 **** Clean-only build of configuration Debug for project unit_test ****
+make clean 
+rm -rf ./src/test_robot.d ./src/test_robot.o
+rm -rf unit_test
+ 
+12:37:57 **** Incremental Build of configuration Debug for project unit_test ****
+make all 
+Building file: ../src/test_robot.cpp
+Invoking: GCC C++ Compiler
+g++ -std=c++0x -I"/Users/ben/eclipse-workspace/ToyRobot" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/test_robot.d" -MT"src/test_robot.o" -o "src/test_robot.o" "../src/test_robot.cpp"
+Finished building: ../src/test_robot.cpp
+ 
+Building target: unit_test
+Invoking: MacOS X C++ Linker
+g++ -L/usr/local/lib -o "unit_test"  ./src/test_robot.o    "/Users/ben/eclipse-workspace/ToyRobot/Debug/src/cmdproc.o" "" "/Users/ben/eclipse-workspace/ToyRobot/Debug/src/toyrobot.o" -lgtest -lgmock
+Finished building target: unit_test
+ 
+12:38:01 **** Incremental Build of configuration Debug for project unit_test ****
+make all 
+make: Nothing to be done for `all'.

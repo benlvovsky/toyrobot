@@ -1,0 +1,147 @@
+#include <stdio.h>
+#include <iostream>
+#include "toyrobot.hpp"
+#include <boost/algorithm/string.hpp>
+#include <boost/algorithm/string/split.hpp>
+
+using namespace std;
+
+bool ToyRobot::IsPlaced() {
+  return this->placed;
+}
+
+
+void ToyRobot::Place(int x, int y, Facing f) {
+	if (x < 0 || x > 4) {
+		throw invalid_argument("Position is beyond acceptable");
+	}
+	this->x = x;
+	this->y = y;
+	this->facing = f;
+
+}
+
+void ToyRobot::Move() {
+	if (!placed) {
+		throw invalid_argument("Has to be placed before");
+	}
+	switch(this->facing) {
+		case NORTH:
+			if (y <= 0) {
+				throw invalid_argument("Position is beyond acceptable");
+			} else {
+				y--;
+			}
+			break;
+		case SOUTH:
+			if (y >= 4) {
+				throw invalid_argument("Position is beyond acceptable");
+			} else {
+				y++;
+			}
+			break;
+		case WEST:
+			if (x <= 0) {
+				throw invalid_argument("Position is beyond acceptable");
+			} else {
+				x--;
+			}
+			break;
+		case EAST:
+			if (x >= 4) {
+				throw invalid_argument("Position is beyond acceptable");
+			} else {
+				x++;
+			}
+			break;
+		default:
+			throw invalid_argument("unacceptable direction");
+	}
+}
+
+void ToyRobot::Left() {
+	switch(this->facing) {
+		case NORTH:
+			this->facing = WEST;
+			break;
+		case SOUTH:
+			this->facing = EAST;
+			break;
+		case WEST:
+			this->facing = SOUTH;
+			break;
+		case EAST:
+			this->facing = NORTH;
+			break;
+		default:
+			throw invalid_argument("unacceptable direction");
+	}
+}
+
+void ToyRobot::Right() {
+	switch(this->facing) {
+		case NORTH:
+			this->facing = EAST;
+			break;
+		case SOUTH:
+			this->facing = WEST;
+			break;
+		case WEST:
+			this->facing = NORTH;
+			break;
+		case EAST:
+			this->facing = SOUTH;
+			break;
+		default:
+			throw invalid_argument("unacceptable direction");
+	}
+}
+
+Report ToyRobot::CreateReport() {
+	struct Report report;
+	report.placed = this->placed;
+    report.facing = this->facing;
+    report.x = this->x;
+    report.y = this->y;
+
+    return report;
+}
+
+
+Facing ToyRobot::faceStrToEnum(string sFacing) {
+	if (sFacing.compare("NORTH")) {
+		return NORTH;
+	} else if (0 == sFacing.compare("NORTH")) {
+		return NORTH;
+	} else if (0 == sFacing.compare("SOUTH")) {
+		return SOUTH;
+	} else if (0 == sFacing.compare("WEST")) {
+		return WEST;
+	} else if (0 == sFacing.compare("EAST")) {
+		return EAST;
+	} else {
+		throw invalid_argument("Incorrect Facing string");
+	}
+}
+
+
+void ToyRobot::process(string line) {
+	std::vector<std::string> tokens;
+	boost::split(tokens, line, boost::is_any_of(" \t\n\r"));
+
+	if(1 == tokens.size() && 0 == line.compare("MOVE")) {
+		Move();
+	} else if(4 == tokens.size() && tokens[0].compare("PLACE") == 0) {
+		cout << "PLACE command detected" << endl;
+		Place(stoi(tokens[1]), stoi(tokens[2]), faceStrToEnum(tokens[3]));
+	} else if(1 == tokens.size() && tokens[0].compare("LEFT") == 0) {
+		Left();
+	} else if(1 == tokens.size() && tokens[0].compare("RIGHT") == 0) {
+		Right();
+	} else if(1 == tokens.size() && tokens[0].compare("REPORT") == 0) {
+		Report report = Report();
+		cout << "Report: X: " << report.x << ", Y:" << report.y << ", FACING:" << report.facing << ", placed status: " << report.placed << endl;
+	} else {
+		throw invalid_argument("Incorrect command or number of parameters");
+	}
+}

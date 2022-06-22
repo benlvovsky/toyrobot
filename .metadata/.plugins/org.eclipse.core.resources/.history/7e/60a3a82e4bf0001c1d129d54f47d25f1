@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <iostream>
+#include "toyrobot.hpp"
+
+using namespace std;
+
+bool ToyRobot::IsPlaced() {
+  return this->placed;
+}
+
+
+void ToyRobot::Place(int x, int y) {
+	if (x < 0 || x > 4) {
+		throw invalid_argument("Position is beyond acceptable");
+	}
+	this->x = x;
+	this->y = y;
+
+}
+
+void ToyRobot::Move() {
+
+}
+
+void ToyRobot::Left() {
+
+}
+
+void ToyRobot::Right() {
+
+}
+
+Report ToyRobot::Report() {
+
+}

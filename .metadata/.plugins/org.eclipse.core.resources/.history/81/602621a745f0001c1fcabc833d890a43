@@ -1,0 +1,11 @@
+
+class ToyRobot {
+  private:
+    bool placed;
+
+  public:
+    ToyRobot() : placed(false) {}
+		int Incr();
+		int value();
+		bool IsPlaced();
+};

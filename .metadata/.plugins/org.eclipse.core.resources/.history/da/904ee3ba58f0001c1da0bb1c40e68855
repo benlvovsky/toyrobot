@@ -1,0 +1,142 @@
+#include <iostream>
+#include "gtest/gtest.h"
+//#include "src/counter.hpp"
+#include "src/toyrobot.hpp"
+
+using namespace std;
+
+TEST(ToyRobot, Place) {
+  ToyRobot tr;
+  EXPECT_FALSE(tr.IsPlaced());
+  tr.Place(0, 0, NORTH);
+  Report report = tr.CreateReport();
+  EXPECT_EQ(NORTH, report.facing);
+  EXPECT_EQ(0, report.x);
+  EXPECT_EQ(0, report.y);
+}
+
+
+//TEST(Counter, Increment) {
+//  Counter c;
+//  EXPECT_EQ(0, c.Incr());
+//  EXPECT_EQ(1, c.Incr());
+//  EXPECT_EQ(2, c.Incr());
+//}
+//
+//
+//TEST(Counter2, value) {
+//  Counter c;
+//  c.Incr();
+//
+//  EXPECT_EQ(1, c.value());
+//  EXPECT_EQ(2, c.value()); //This test should fail
+//}
+//
+
+TEST(ToyRobot, EastMovementFrom) {
+  ToyRobot tr;
+  tr.Place(0, 0, EAST);
+  tr.Move();
+  EXPECT_EQ(1, tr.CreateReport().x);
+  tr.Move();
+  EXPECT_EQ(2, tr.CreateReport().x);
+  tr.Move();
+  EXPECT_EQ(3, tr.CreateReport().x);
+  tr.Move();
+  EXPECT_EQ(4, tr.CreateReport().x);
+  try {
+	  tr.Move();
+	  FAIL() << "Expected exception";
+  } catch(...) {
+	  int i = 1;
+  }
+}
+
+
+TEST(ToyRobot, WestMovementFrom) {
+  ToyRobot tr;
+  tr.Place(4, 0, WEST);
+  tr.Move();
+  EXPECT_EQ(3, tr.CreateReport().x);
+  tr.Move();
+  EXPECT_EQ(2, tr.CreateReport().x);
+  tr.Move();
+  EXPECT_EQ(1, tr.CreateReport().x);
+  tr.Move();
+  EXPECT_EQ(0, tr.CreateReport().x);
+  try {
+	  tr.Move();
+	  FAIL() << "Expected exception";
+  } catch(...) {
+	  int i = 1;
+  }
+}
+
+
+TEST(ToyRobot, NorthMovementFrom) {
+  ToyRobot tr;
+  tr.Place(0, 0, SOUTH);
+  tr.Move();
+  EXPECT_EQ(1, tr.CreateReport().y);
+  tr.Move();
+  EXPECT_EQ(2, tr.CreateReport().y);
+  tr.Move();
+  EXPECT_EQ(3, tr.CreateReport().y);
+  tr.Move();
+  EXPECT_EQ(4, tr.CreateReport().y);
+  try {
+	  tr.Move();
+	  FAIL() << "Expected exception";
+  } catch(invalid_argument e) {
+	  sout << e.what();
+  }
+}
+
+
+TEST(ToyRobot, SouthMovementFrom) {
+  ToyRobot tr;
+  tr.Place(0, 4, NORTH);
+  tr.Move();
+  EXPECT_EQ(3, tr.CreateReport().y);
+  tr.Move();
+  EXPECT_EQ(2, tr.CreateReport().y);
+  tr.Move();
+  EXPECT_EQ(1, tr.CreateReport().y);
+  tr.Move();
+  EXPECT_EQ(0, tr.CreateReport().y);
+  try {
+	  tr.Move();
+	  FAIL() << "Expected exception";
+  } catch(...) {
+	  int i = 1;
+  }
+}
+
+
+TEST(ToyRobot, LeftRight) {
+  ToyRobot tr;
+  tr.Place(0, 4, NORTH);
+  EXPECT_EQ(NORTH, tr.CreateReport().facing);
+  tr.Left();
+  EXPECT_EQ(WEST, tr.CreateReport().facing);
+  tr.Left();
+  EXPECT_EQ(SOUTH, tr.CreateReport().facing);
+  tr.Left();
+  EXPECT_EQ(EAST, tr.CreateReport().facing);
+
+  tr.Place(0, 4, NORTH);
+  tr.Right();
+  EXPECT_EQ(EAST, tr.CreateReport().facing);
+  tr.Right();
+  EXPECT_EQ(SOUTH, tr.CreateReport().facing);
+  tr.Right();
+  EXPECT_EQ(WEST, tr.CreateReport().facing);
+  tr.Right();
+  EXPECT_EQ(NORTH, tr.CreateReport().facing);
+}
+
+
+int main(int argc, char **argv) {
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}

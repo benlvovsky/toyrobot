@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.cdt.docker.launcher.launchConfigurationType">
+    <listAttribute key="org.eclipse.cdt.docker.launcher.additional_dirs"/>
+    <stringAttribute key="org.eclipse.cdt.docker.launcher.connection_uri" value="unix:///var/run/docker.sock"/>
+    <listAttribute key="org.eclipse.cdt.docker.launcher.exposed_ports"/>
+    <stringAttribute key="org.eclipse.cdt.docker.launcher.image" value="429971305168.dkr.ecr.ap-southeast-2.amazonaws.com/img_markowitz:latest"/>
+    <booleanAttribute key="org.eclipse.cdt.docker.launcher.keep_after_launch" value="false"/>
+    <booleanAttribute key="org.eclipse.cdt.docker.launcher.privileged_mode" value="false"/>
+    <booleanAttribute key="org.eclipse.cdt.docker.launcher.support_std_input" value="false"/>
+    <stringAttribute key="org.eclipse.cdt.dsf.gdb.DEBUG_NAME" value="gdb"/>
+    <booleanAttribute key="org.eclipse.cdt.dsf.gdb.DEBUG_ON_FORK" value="false"/>
+    <stringAttribute key="org.eclipse.cdt.dsf.gdb.GDB_INIT" value=".gdbinit"/>
+    <booleanAttribute key="org.eclipse.cdt.dsf.gdb.NON_STOP" value="false"/>
+    <booleanAttribute key="org.eclipse.cdt.dsf.gdb.REVERSE" value="false"/>
+    <stringAttribute key="org.eclipse.cdt.dsf.gdb.TRACEPOINT_MODE" value="TP_NORMAL_ONLY"/>
+    <booleanAttribute key="org.eclipse.cdt.dsf.gdb.UPDATE_THREADLIST_ON_SUSPEND" value="false"/>
+    <intAttribute key="org.eclipse.cdt.launch.ATTR_BUILD_BEFORE_LAUNCH_ATTR" value="2"/>
+    <stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="Debug/ToyRobot"/>
+    <stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="ToyRobot"/>
+    <booleanAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_AUTO_ATTR" value="false"/>
+    <stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value=""/>
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+        <listEntry value="/ToyRobot"/>
+    </listAttribute>
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+        <listEntry value="4"/>
+    </listAttribute>
+    <stringAttribute key="process_factory_id" value="org.eclipse.cdt.dsf.gdb.GdbProcessFactory"/>
+</launchConfiguration>

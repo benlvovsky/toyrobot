@@ -1,0 +1,9 @@
+
+class ToyRobot {
+  private:
+    int counter_;
+  public:
+    ToyRobot() : counter_(0) {}
+      int Incr();
+      int value();
+};

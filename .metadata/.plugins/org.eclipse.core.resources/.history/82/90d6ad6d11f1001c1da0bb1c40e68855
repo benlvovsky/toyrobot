@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+
+enum Facing {
+	NORTH, SOUTH, EAST, WEST
+};
+
+struct Report {
+    bool placed;
+    Facing facing;
+    int x;
+    int y;
+};
+
+
+class ToyRobot {
+  private:
+    int x, y;
+    Facing facing;
+    bool placed;
+
+  public:
+    ToyRobot() : x(0), y(0), facing(NORTH), placed(false) {}
+
+	bool IsPlaced();
+
+	void Place(int x, int y, Facing f);
+	void Move();
+	void Left();
+	void Right();
+	Report CreateReport();
+//	void process(string line);
+//	Facing faceStrToEnum(string sFacing);
+};

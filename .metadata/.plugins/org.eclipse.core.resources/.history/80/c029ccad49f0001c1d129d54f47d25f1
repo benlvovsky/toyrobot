@@ -1,0 +1,9 @@
+#include <stdio.h>
+#include <iostream>
+#include "toyrobot.hpp"
+
+using namespace std;
+
+bool ToyRobot::IsPlaced() {
+  return this->placed;
+}

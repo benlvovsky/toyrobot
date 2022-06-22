@@ -1,0 +1,15 @@
+12:37:51 **** Incremental Build of configuration Debug for project ToyRobot ****
+make all 
+Building file: ../src/cmdproc.cpp
+Invoking: GCC C++ Compiler
+g++ -std=c++0x -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/cmdproc.d" -MT"src/cmdproc.o" -o "src/cmdproc.o" "../src/cmdproc.cpp"
+Finished building: ../src/cmdproc.cpp
+ 
+Building target: ToyRobot
+Invoking: MacOS X C++ Linker
+g++  -o "ToyRobot"  ./src/ToyRobotRunner.o ./src/cmdproc.o ./src/toyrobot.o    -lgtest
+Finished building target: ToyRobot
+ 
+
+12:37:53 Build Finished. 0 errors, 0 warnings. (took 2s.605ms)
+
